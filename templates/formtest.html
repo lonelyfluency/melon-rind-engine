@@ -1,0 +1,102 @@
+$def with(name,judge,items)
+<html>
+<meta http-equiv="Content-Type" content = "text/html; charset=utf-8"/>
+<head>
+<style type="text/css">
+		body{	
+			margin: 0 ;
+			padding: 0 ;
+			background-image: url(https://alicliimg.clewm.net/608/701/1701608/15153794935423e75ba6c56b69344c8d76b90165f97a61515379488.jpg);
+			background-repeat: no-repeat ;
+			background-attachment: fixed;
+			background-position: center;			
+			}
+div.container
+{
+width:100%;
+margin:auto;
+border:1px solid gray;
+line-height:150%;
+}
+div.header,div.footer
+{
+padding:0.5em;
+color:white;
+background-color:gray;
+clear:left;
+}
+h1.header
+{
+padding:0;
+margin:0;
+}
+div.left
+{
+float:left;
+width:160px;
+margin:0;
+padding:1em;
+}
+div.rec
+{
+border-left: 4px solid yellow;
+color: red;
+size: 30px;
+}
+div.Content
+{
+margin-left:190px;
+border-left:1px solid gray;
+padding:1em;
+}
+</style>
+<script>
+function showLocalStorage()
+{
+    if (localStorage.username)
+   {
+     return localStorage.username;
+   }
+}
+</script>
+<script>
+var Name=document.getElementById("user").innerHTML;
+if(Name)
+{
+	localStorage.setItem("username",Name);
+	document.getElementById("user").innerHTML=("Dear"+'  '+Name);
+}	
+</script>
+</head>
+
+<body>
+$if judge:
+	<p><div id="user">$name</div></p>
+<title>瓜皮知道</title>
+$if not judge:
+	<p><a href="/re">没有账号，点击注册</a></p>
+<div align="center">
+<h1 font-size:400px>瓜皮搜索</h1>
+<form name="keyword" action="/s" method="GET">
+    <input type="text" name="keyword"  size="25">
+    <input type="submit" value="search">
+</form>
+<form action="/s" method="POST">
+	<input type="submit" value="picture search">
+</form >
+
+</div>
+
+<p><div class = 'rec'>我们为您推荐了：</div></p>
+</div>
+$for item in items:
+	<div class="container">
+		<div class="header"><a href=$item[1] class="header">$item[0]</a></div>
+		<div class="left"><p><img src=$item[3] width = 100%></p></div>
+		<div class="content">
+			<h2>价格：$item[2]</h2>
+			<h2>好评率：$item[4]</h2></div>
+			<h3>$item[5]</h3>
+		<div class="footer"></div>
+</body>
+</html>

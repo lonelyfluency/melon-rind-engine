@@ -1,0 +1,41 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>瓜皮推荐:做最好的推荐网站</title>
+	<style type="text/css">
+		body{	
+			margin: 0 ;
+			padding: 0 ;
+			background-image: url(https://alicliimg.clewm.net/608/701/1701608/1515379451719eafe66db211b2312228227834d76efef1515379446.jpg);
+			background-repeat: no-repeat ;
+			background-attachment: fixed;
+			background-position: center;			
+			}
+	</style>
+
+	<script>
+		function delLocalStorage()
+		{
+		localStorage.removeItem('username')
+		}
+	</script>
+</head>
+
+<body onload="delLocalStorage()" >
+<div style="position:absolute;left:30%;top:30%">
+<form action="login_action" method="GET">
+	<p>请点击右上角login录音登录    
+	<input type="submit" value="录音完毕" style="margin-left:0px" ></p>
+</form>
+<form action="login_action" method="POST">
+    <p>账号<input type="text" name="username"  size="25"></p>
+    <p>密码<input type="password" name="userpassword"  size="25"></p>
+    <a href="/re" >没有账号，点击注册 </a>
+    <input type="reset" value="重置" style="margin-left:55px">
+    <input type="submit" value="登录" style="margin-left:0px">
+</form>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,150 @@
+$def with (name,items,rec)
+
+<html>
+<head>
+<p><div id="user"></div></p>
+<script>
+function showLocalStorage()
+{
+    if (localStorage.username)
+   {
+     return localStorage.username
+   }
+}
+</script>
+<style type="text/css">
+body
+{	
+margin: 0 ;
+padding: 0 ;
+background-image: url(https://alicliimg.clewm.net/608/701/1701608/1515555277713bc62ca8530d5457970ffff23e4ebcca21515555272.jpg);
+background-repeat: no-repeat ;
+background-attachment: fixed;
+}
+div.top
+{	
+background-color:rgba(255,255,255,0);
+border-bottom-style:solid;
+border-width: 1px;
+
+}
+div.right
+{
+float:right;
+}
+div.main
+{
+
+}
+div.leftbar
+{
+width:800px;
+position:absolute;
+left:70px;
+background-color:rgba(255,238,255,0.5)
+}
+div.rightbar
+{
+width:300px;
+float:right;
+position:absolute;
+right:40px;
+}
+div.container
+{
+width:100%;
+margin:0px;
+border:0px solid gray;
+line-height:150%;
+background-color:rgba(255,238,255,0.5);
+}
+div.header,div.footer
+{
+padding:0.5em;
+color:white;
+background-color:;
+clear:left;
+}
+h1.header
+{
+padding:0;
+margin:0;
+}
+div.left
+{
+float:left;
+width:160px;
+padding:1em;
+}
+div.Content
+{
+margin-left:190px;
+border-left:1px solid gray;
+padding:1em;
+}
+</style>
+</head>
+<body >
+<div class="top">
+	<script>
+		document.getElementById("user").innerHTML=showLocalStorage();
+	</script>
+	<br></br>
+	<div class="right"><button onclick="window.location.href='/'";>注销</button></div>
+	<div style="float:left;background-color:grey;font-size:20px">瓜皮搜索</div>
+	<div style="float:left"><form name="keyword" action="/s" method="GET">
+    		<input type="text" name="keyword"  size="50" value=$name[0]>
+    		<input type="submit" value="search">
+	</form></div>
+	<div ><form action="/s" method="POST">
+	<input type="submit" value="picture search">
+	</form></div>
+	<br></br>
+	<br></br>
+<div class="main">
+	<div class="leftbar" style="font-size:20px"><em>$name[0] 的搜索结果:  </em></div>
+	<div class="rightbar">
+		<p>猜你喜欢 </p>
+		$for item in rec:
+			<div class="container">
+				<div class="header"><a href=$item[1] class="header">$item[0]</a></div>
+				<div class="left"><p><img src=$item[3] width = 100%></p></div>
+				<div class="content">
+					<h4>价格：$item[2]</h4>
+					<h4>好评率：$item[4]</h4></div>
+				<div class="footer"></div>
+			</div>
+
+		$for item in items:
+			<div class="container">
+				<div class="header"><a href=$item[1] class="header">$item[0]</a></div>
+				<div class="left"><p><img src=$item[3] width = 100%></p></div>
+				<div class="content">
+					<h4>价格：$item[2]</h4>
+					<h4>好评率：$item[4]</h4></div>
+				<div class="footer"></div>
+			</div>
+	</div>
+	<br></br>
+	<div class="leftbar">
+		$if name:
+		     $if len(name)!=1:	
+		     	$for i in range(1,len(name)):
+		     		<div class="container">
+					<div class="header"><h2><a href=$name[i][1] class="header">$name[i][0]</a></h2></div>
+					<div class="left"><p><img src=$name[i][3] width = 100%></p></div>
+					<div class="content">
+						<h3>价格：$name[i][2]</h3>
+						<h3>好评率：$name[i][4]</h3></div>
+						<p>$name[i][5]</p>
+					<div class="footer"></div>
+				</div>
+
+		     $else:
+			<p>Nothing</p>          		
+		$else:
+		    <em>Nothing for result</em>
+	</div>
+</div>
+</body>
+</html>
